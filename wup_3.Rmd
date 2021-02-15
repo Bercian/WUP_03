@@ -1,7 +1,7 @@
 ---
 title: "Alcohol vs Seat choice"
-author: "Your Name"
-date: "Fall 2020"
+author: "Isai Bercian"
+date: "Spring 2021"
 output: html_document
 ---
 
@@ -12,14 +12,15 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r include=FALSE}
 require(tidyverse)
 require(tigerstats)
-davisdata <- read.csv(file="UCDavis.csv")
+davisdata <- read.csv(file="UCDavis.csv") 
 ```
-## Our Goal is to answer this question Is there a difference between the alcohol consumed between the row
-## you choose to sit in??
+ Our Goal is to answer this question Is there a difference between the alcohol consumed between the row
+ you choose to sit in??
 
 ## Now with ggplot - first select the basic data
 
-```{r}
+
+   ```{r}
 basicCN <- ggplot(davisdata,aes(y=alcohol,x=Seat))
 ```
 ## Now add in boxplot
@@ -35,7 +36,16 @@ basicCN + geom_boxplot()
 basicCN + geom_boxplot(notch=TRUE,outlier.color = "red") + stat_boxplot(geom ='errorbar') + labs(title="Fancy notch boxplot \n with 2 lines")
 ```
 
+
+This BoxPlot shows that the heavy drinkers are mostly in the back.
+
 ## Numerical Summarys 
+
+```{r}
+favstats(alcohol~Seat,data=ucdavis1)
+```
+
+People who sit in the back drink three times as much alcohol then the people who sit in the front or in the middle by an enormous amount.
 
 ## Inferential Tests
 
